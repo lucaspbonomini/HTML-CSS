@@ -1,0 +1,272 @@
+@charset "UTF-8";   /* Reconhecimento alfabético brasileiro, pt-br */
+
+
+/* Importa uma fonte através do @import do google fonts */
+/* Fonte: Specail Elite */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+
+/* Cria uma fonte através da sub pasta do arquivo Desafio010, onde essa fonte foi baixada */
+
+@font-face {
+    font-family: 'Android'; /* nome para chamar a fonte */
+    src: url(../githubcev/fontes/idroid.otf) format('opentype'); /* url() importa a fonte e
+    format() diz qual é o formato da fonte */
+    font-weight: ; /* formato da fonte, grossa, fina, normal, etc... */
+}
+
+
+/* Paleta de cores:
+#c5ebd6
+#83e1ad
+#3ddc84
+#2fa866
+#1a5c37
+#063d1e
+*/
+
+
+/* :root Cria uma pseudo classe que funciona como variável global */
+
+:root {
+    --cor01: #c5ebd6;
+    --cor02: #83e1ad;
+    --cor03: #3ddc84;
+    --cor04: #2fa866;
+    --cor05: #1a5c37;
+    --cor06: #063d1e;
+
+    --fonte_padrao: arial, verdana, helvetica, sans-serif; 
+
+    /* Cria uma variável através do @import do topo da página e o nome da variável 
+    será o mesmo nome font-family do google fonts que está debaixo de @import do google fonts */
+
+    --fonte_destaque: 'Special Elite' ; /* importa a fonte Special Elite para a 
+    variável --fonte_destaque e cursive é um tipo de fonte genérico */
+
+    --fonte_android: 'Android', cursive; /* Cria a variável puxando a fonte Android criada
+    anteriormente, caso a fonte Android não estiver disponível a fonte será cursive */
+}
+
+
+/* Cria um seletor com asterístico significando uma configuração global.
+Tudo que for feito aqui irá valer para a página inteira */
+
+* {
+    margin: 0px; /* Deixa a página inteira sem margin */
+    padding: 0px; /* Deixa a página inteira sem padding */
+}
+
+
+/* Estrutura do corpo */
+body {     /* corpo da página */
+    background-color: var(--cor01); /* Muda a cor de fundo do body do site */
+    font-family: var(--fonte_padrao); /* Muda a fonte das letras do body do site */
+}
+
+
+a.externo::after {  /* Pseudo classe externo, para inserir um emoji junto aos links de toda a página.
+     ::after (pseudo elemento), significa que essa pseudo classe é o último filho dela */
+    content: '\00A0\1F517'; /* content é utilizado com os pseudo elementos before e after para inserir conteúdo gerado pelo CSS. \00A0 é para gerar um espaço entre o emoji e o link e \1F517 é a referência para o emoji */
+}
+
+/* Cabeçalho */
+header {
+    background-image: linear-gradient(to bottom, var(--cor02), var(--cor05)); /*Cria um degradê no header*/
+    min-height: 150px; /* Define a altura mínima do tamanho do header */
+    text-align: center; /* deixa o texto centralizado */
+    padding-top: 30px; /* Cria um espaçamento acima do título h1 para ficar mais bonito */
+}
+
+
+/* herança header para h1 */
+header > h1 {
+    color: white; /* Muda a cor das letras do h1 do header */
+    font-family: var(--fonte_destaque); /* Muda a fonte das letras do h1 do header */
+    font-weight: normal; /* Diminui a grossura da fonte que era negrito para normal */
+    margin-bottom: 20px; /* Cria um espaçamento abaixo, para afastar o título do texto */
+    font-size: 3em; /* Aumenta o tamanho da fonte do h1 */
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.432); /* Cria uma sombra no h1 */
+}
+
+
+/* herança header para p */
+header > p {
+    color: white; /* Muda a cor das letras do <p> do header */
+    font-size: 1.2em; /* Aumenta o tamanho da fonte do <p> */
+    max-width: 600px; /* Define um tamanho máximo de largura, para o texto ficar ajustável e centralizar */
+    padding-right: 10px; /* Cria um espaçamento no <p> no lado direito */
+    padding-left: 10px; /* Cria um espaçamento no <p> no lado esquerdo */
+    margin: auto; /* Centraliza e ajusta o texto conforme o tamanho e largura da página */
+}
+
+
+/* Links dentro de <nav> */
+nav {
+    background-color: var(--cor05); /* Muda a cor de fundo dos links dentro de nav */
+    padding: 10px; /* Cria um espaçamento geral, cima, baixo, lados */
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.151); /* Cria uma sombra na box <nav> */
+}
+
+
+nav > a {    /* herança de nav para a */
+    color: white; /* Troca a cor da fonte */
+    padding: 10px; /* Cria um espaçamento geral, cima, baixo, lados de 10px */
+    text-decoration: none; /* Retira o sublinhado do link */
+    transition-duration: 0.5s; /* Faz os efeitos durarem 0.5 segundos */
+}    
+
+
+/* herança de nav para a:hover */
+nav > a:hover {  /* Cria uma pseudo classe, é ativada ao passar o mouse em cima deste item */
+    color: blanchedalmond; /* Muda a cor da fonte ao passar o mouse em cima */
+    background-color: gray; /* Muda a cor de fundo ao passar o mouse em cima */
+    border-radius: 5px; /* Cria uma borda arredondada ao passar o mouse em cima */
+}
+
+
+/* Conteúdo principal */
+main {   /* elemento main */
+    background-color: white; /* Muda a cor de fundo do conteúdo principal dentro de <main> */
+    max-width: 1000px; /* Ajusta limite máximo de 1000px de largura para página */
+    min-width: 300px; /* Ajusta limite mínimo de 300px de largura para página */
+    margin: auto; /* Margem automática. Ajusta a margem pra qualquer dispositivo */
+    margin-bottom: 30px; /* Cria uma margem em baixo do conteúdo principal <main> */
+    padding: 20px; /* Cria um espaçamento nas laterias de 20px, no conteúdo pricipal <main> */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.432); /* Cria sobras ao redor da box de <main> */
+    border-bottom-left-radius: 11px; /* Arredonda a borda inferior esquerda de <main> */
+    border-bottom-right-radius: 11px; /* Arredonda a borda inferior direita de <main> */
+}
+
+
+main h1, h2 {   /* não é uma herança, apenas definições de main para h1 e h2 ao mesmo tempo */
+    font-family: var(--fonte_android); /* Muda a fonte das letras do <main> dos h1 e h2 */
+    font-weight: normal; /* Diminui a grossura da fonte, era negrito para normal */
+}
+
+
+main h1 { /* Definições do h1 dentro do main */
+    font-size: 1.8em; /* Ajusta o tamanho da fonte */
+}
+
+
+main h2 {  /* Sobscreve o h2 anterior. Não é herança */
+    color: var(--cor05);  /* Muda a cor da fonte */
+    font-size: 1.3em; /* Ajusta o tamanho da fonte */
+    background-image: linear-gradient(to right, var(--cor04), transparent); /* Croa um degradê em direção à direita com linhas, indo da cor da variável até ficar transparente no final */
+    text-indent: 10px; /* Cria uma indentação no h2 de 10px */
+}
+
+
+main p { /* não é herança, está considerando todos os <p> dentro de <main> */
+    margin: 15px 0px; /* Cria espaçamentos em cima, baixo e lados nos <p> dentro de main, não é herança */
+    text-align: justify; /* justifica os textos <p> dentro de <main> */
+    text-indent: 40px; /* Cria o parágrafo de texto em cada <p> dentro de main */
+    line-height: 2em; /* Espaçamento entre cada linha de <p> dentro de <main> */
+    font-size: 1em; /* Tamanho da fonte do <p> dentro de main */
+}
+
+
+main strong { /* Considera qualquer tag strong dentro de main */
+    color: var(--cor04);   /* Muda a cor de letra dentro da tag strong dentro de main */
+    font-weight: bold;  /* Deixa a letra dentro de strong dentro de main mais grossa */
+    background-color: var(--cor02);  /* Cria um fundo da cor escolhida das tags strong dentro de main */
+    padding: 2px 6px; /* Cria um espaçamento de altura, largura e laterais das tags strong dentro de main */
+}
+
+
+main a { /* links da área principal <main> */
+    color: yellowgreen; /* Muda a cor da letra */
+    text-decoration: none; /* Tira o sublinhado da palavra, do link */
+    font-family: rockwell; /* Muda a fonte da letra */
+}
+
+
+main a:hover {   /* Pseudo classe hover, característica passar o mouse em cima do elemento */
+    text-decoration: underline; /* Por causa do hover ao passar o mouse em cima, insere o sublinhado no elemento */
+    color: var(--cor06); /* Por causa do hover, muda a cor da letra ao passar o mouse em cima */
+}
+
+
+main img {  /* definições de main para img */
+    width: 100%; /* Ajusta a largura das imagens dentro de <main> para 100% da largura da página,
+    neste caso é 1000px, definifo em main max-width: 1000px; */
+}
+
+
+main img.pequena01 {  /* Classe criada para diminuir a imagem bugdroid na página */
+    max-width: 320px; /* Diminui a imagem bugdroid da página */
+    display: block; /* Transforma a imagem em uma box do tipo blok para o margin surtir efeito */
+    margin: auto; /*Ajusta a imagem bugdroid para centralizar a imagem, ficando ajustável a qualquer tamanho*/
+}
+
+
+main aside {  /* definições de aside dentro do <main> */
+    background-color: var(--cor04); /* Muda a cor de fundo do <aside> */
+    padding: 10px;  /* Cria um espaçamento geral, cima, baixo, laterais do aside dentro de main */
+    border-radius: 11px; /* Cria uma borda arredondada nos quatro cantos de 11px do background do aside */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.336); /* Cria uma sombra ao redor da caixa de aside */
+}
+
+
+main aside > ul {   /* herança do aside para ul dentro dele, dentro da tag main */
+    list-style-type: '\2714\00A0\00A0'; /* \2714 ( código do emoji, \00A0 ( código de espaço, entre o 
+    emoji e o texto, feito duas vezes, dando duplo espaço). Não é compatível com todo navegador */
+    list-style-position: inside; /* Muda a posição das bolinhas(outside é pra fora e inside pra dentro) */
+    columns: 2; /* Faz a matriz se dividir em 2 colunas, uma ao lado da outra */
+    box-shadow: 3px 2px 15px 4px rgba(0, 0, 0, 0.438); /* Cria uma sombra ao redor da lista do aside */
+    border-radius: 11px; /* Cria uma borda arredondada ao redor da caixa da lista de aside */
+    padding: 11px; /* Cria um espaçamento na caixa da lista dentro do aside do main */
+}
+
+
+main aside > h3 { /* herança do aside para h3 dentro da tag main */
+    background-color: rgb(0, 0, 0); /* Cria uma cor de fundo da caixa do h3 do aside do main */
+    color: blanchedalmond; /* Muda a cor da letra do h3 */
+    padding: 11px; /* Cria um espaçamento */
+    margin: -10px -10px -10px -10px; /* Cria uma margem negativa para cobrir todo o espaço da caixa, 
+    tanto superior quanto inferior e lateral, cobrindo o espaço da caixa com o background */
+    border-top-left-radius: 11px; /* Cria uma borda arredondada no espaço superior esquerdo */
+    border-top-right-radius: 11px; /* Cria uma borda arredondada no espaço superior direito */
+}
+
+
+main div.video { /* Classe video criada dentro de main */
+    background-color: rgb(6, 71, 6); /* Muda a cor de fundo da <div> dentro de <main> */
+    margin: 0px -20px 30px -20px; /* Ajusta as margens da <div> dentro de main */
+    padding: 11px; /* Cria um espaçamento na <div> dentro de main */
+    padding-bottom: 58.5%;
+    position: relative;
+}
+
+
+main div.video > iframe {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
+
+
+/* Rodapé */
+footer {
+    background-color: var(--cor06); /* Muda a cor de fundo do footer */
+    color: white; /* Muda a cor das letras do footer */
+    padding: 6px;  /* Cria um espaçamento geral, cima, baixo e lados no rodapé */
+    text-align: center; /* Centraliza o texto */
+    font-size: 0.8em; /* Ajusta o texto para o tamanho 0.8em */
+}
+
+
+footer a {  /* Não é herança. Modifica apenas os links dentro do rodapé */
+    color: yellowgreen;  /* Muda a cor apenas dos links no rodapé */
+    text-decoration: none;  /* Retira o sublinhado dos links no rodapé */
+}
+
+
+footer a:hover {  /* Função passar mouse em cima do elemento dos links no rodapé */
+    color: var(--cor05);  /* Ao passar mouse em cima, muda a cor da fonte dos links no rodapé*/
+    text-decoration: underline; /* Ao passar o mouse em cima, insere o sublinhado nos links do rodapé */
+}
